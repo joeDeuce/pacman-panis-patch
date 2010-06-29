@@ -1,5 +1,9 @@
 Here it is, by request!
 
+Patch tested against 3.4.0
+
 Apply this patch from within src/pacman
-To enable, add 'ILovePanis' to a line by itself in pacman.conf
+(from within src/pacman-3.4.0/src/pacman if using PKGBUILD)
+
+To enable, add 'ILovePanis' to a line by itself in /etc/pacman.conf
 And for the record, I don't LovePanis
