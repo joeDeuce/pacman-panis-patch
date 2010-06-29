@@ -1,0 +1,79 @@
+diff -Nau a/callback.c b/callback.c
+--- a/callback.c	2010-03-18 22:45:20.000000000 -0400
++++ b/callback.c	2010-06-28 16:52:49.897548581 -0400
+@@ -102,7 +102,14 @@
+ 	}
+ 
+ 	if(hashlen > 0) {
+-		printf(" [");
++		/* If you love panis, 
++		 * you get no candy! */
++		if(config->panis) {
++			config->chomp = 0;
++			printf(" 8");
++		} else {
++			printf(" [");
++		}
+ 		for(i = hashlen; i > 0; --i) {
+ 			/* if special progress bar enabled */
+ 			if(config->chomp) {
+@@ -129,6 +136,17 @@
+ 				} else {
+ 					printf("\033[0;37m \033[m");
+ 				}
++			} else if(config->panis) { 
++				/* ILovePanisBar! */
++				if(i > hashlen - hash) {
++					printf("=");
++				} else if(i == hashlen - hash) {
++					printf("D");
++				} else if(proglen == hashlen - hash) {
++					printf("D");
++				} else {
++					printf(" ");
++				}
+ 			} /* else regular progress bar */
+ 			else if(i > hashlen - hash) {
+ 				printf("#");
+@@ -136,7 +154,15 @@
+ 				printf("-");
+ 			}
+ 		}
+-		printf("]");
++		if(config->panis) {
++			if (bar_percent == 100) {
++				printf("D");
++			} else {
++				printf(" ");
++			}
++		} else {
++			printf("]");
++		}		
+ 	}
+ 	/* print display percent after progress bar */
+ 	/* 5 = 1 space + 3 digits + 1 % */
+diff -Nau a/conf.h b/conf.h
+--- a/conf.h	2010-05-05 11:37:01.000000000 -0400
++++ b/conf.h	2010-06-28 15:55:27.590211914 -0400
+@@ -69,6 +69,7 @@
+ 
+ 	/* conf file options */
+ 	unsigned short chomp; /* I Love Candy! */
++	unsigned short panis; /* I Love Panis! */
+ 	unsigned short showsize; /* show individual package sizes */
+ 	/* When downloading, display the amount downloaded, rate, ETA, and percent
+ 	 * downloaded of the total download list */
+Common subdirectories: a/.deps and b/.deps
+diff -Nau a/pacman.c b/pacman.c
+--- a/pacman.c	2010-05-18 12:25:59.000000000 -0400
++++ b/pacman.c	2010-06-28 15:55:20.460212568 -0400
+@@ -755,6 +755,9 @@
+ 		if(strcmp(key, "UseSyslog") == 0) {
+ 			alpm_option_set_usesyslog(1);
+ 			pm_printf(PM_LOG_DEBUG, "config: usesyslog\n");
++		} else if(strcmp(key, "ILovePanis") == 0) {
++			config->panis = 1;
++			pm_printf(PM_LOG_DEBUG, "config: panis\n");
+ 		} else if(strcmp(key, "ILoveCandy") == 0) {
+ 			config->chomp = 1;
+ 			pm_printf(PM_LOG_DEBUG, "config: chomp\n");
