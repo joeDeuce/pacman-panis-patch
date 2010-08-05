@@ -17,7 +17,7 @@ diff -Nau a/callback.c b/callback.c
  		for(i = hashlen; i > 0; --i) {
  			/* if special progress bar enabled */
  			if(config->chomp) {
-@@ -129,6 +136,17 @@
+@@ -129,6 +136,15 @@
  				} else {
  					printf("\033[0;37m \033[m");
  				}
@@ -25,9 +25,7 @@ diff -Nau a/callback.c b/callback.c
 +				/* ILovePanisBar! */
 +				if(i > hashlen - hash) {
 +					printf("=");
-+				} else if(i == hashlen - hash) {
-+					printf("D");
-+				} else if(proglen == hashlen - hash) {
++				} else if((i == hashlen - hash) || (proglen == hashlen - hash)) {
 +					printf("D");
 +				} else {
 +					printf(" ");
