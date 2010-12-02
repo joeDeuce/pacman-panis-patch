@@ -1,6 +1,6 @@
 Here it is, by request!
 
-Patch tested against 3.4.0
+Patch tested against 3.4.0 and 3.4.1
 
 Apply this patch from within src/pacman
 (from within src/pacman-3.4.0/src/pacman if using PKGBUILD)
