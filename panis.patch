@@ -10,7 +10,7 @@ diff -Nau a/callback.c b/callback.c
 +		 * you get no candy! */
 +		if(config->panis) {
 +			config->chomp = 0;
-+			printf(" 3");
++			printf(" 8");
 +		} else {
 +			printf(" [");
 +		}
