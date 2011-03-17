@@ -1,11 +1,17 @@
 Here it is, by request!
 
-Patch tested against 3.4.0 through 3.4.2
 
-Works with current pacman-git, as of 22-Jan-2011
+Patch tested against 3.4.0 through 3.5.0
 
-Apply this patch from within src/pacman
-(from within src/pacman-3.4.0/src/pacman if using PKGBUILD)
+Works with current pacman-git, as of 16 Mar 2011
 
-To enable, add 'ILovePanis' to a line by itself in /etc/pacman.conf
+
+A PKGBUILD is available in the AUR: "pacman-panis-git"
+
+
+To enable, add 'ILovePanis' to a line by itself in 
+the [options] section of /etc/pacman.conf
+
+
+
 And for the record, I don't LovePanis
